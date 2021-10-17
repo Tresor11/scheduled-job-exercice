@@ -5,16 +5,16 @@
   def initialize
   end
 
-  def client_info
+  def clients_info
     request = get("#{API_URL}/client_info.json")
     request.run
-    request.reponse
+    request.response
   end
 
-  def client_sales
+  def clients_sales
     request = get("#{API_URL}/client_sales.json")
     request.run
-    request.reponse
+    request.response
   end
 
   private
