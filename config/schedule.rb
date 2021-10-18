@@ -8,8 +8,13 @@
 # set :output, "/path/to/my/cron_log.log"
 set :output, 'log/whenever.log'
 #
-every 1.minutes do
-  runner "Client.say_hello"
+
+every 5.minutes do
+  runner "FetchClientsJob.perform_later"
+end
+
+every 5.minutes do
+  runner "FetchSalesJob.perform_later"
 end
 #
 # every 4.days do
