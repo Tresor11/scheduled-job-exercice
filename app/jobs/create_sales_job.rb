@@ -2,8 +2,9 @@ class CreateSalesJob < ApplicationJob
   queue_as :default
 
   def perform(sales)
-    sales.each do |sale|
-      Client.find_by(client_id: sale['client_id']).sales.create(revenue: sale['revenue'])
-    end
+    Sale.update_all(sales.map {|sale|
+        {revenue: sale['revenue'], user_id: User.find_by(user_id: sale['user_id'])}
+      }
+    )
   end
 end
