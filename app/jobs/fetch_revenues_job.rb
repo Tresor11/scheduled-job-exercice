@@ -2,7 +2,6 @@ class FetchRevenuesJob < ApplicationJob
   queue_as :default
 
   def perform
-    # Do something later
     ikiz = Ikizmet.new
     sales = ikiz.clients_sales.handled_response["data"]
 
